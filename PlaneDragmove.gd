@@ -1,6 +1,6 @@
-extends KinematicBody
+extends CharacterBody3D
 
-var camera: Camera
+var camera: Camera3D
 var plane: Array
 
 ################################################################################
@@ -12,7 +12,7 @@ var plane: Array
 #
 # by assuming point_one is t=0 and point_two is t=1
 ################################################################################
-func get_line_formulas(point_one: Vector3, point_two: Vector3) -> Array:
+func get_line_formulas(point_one : Vector3, point_two : Vector3) -> Array:
 
 
 	# p2 = p1 + d
@@ -57,7 +57,7 @@ func get_plane_from_points(p1: Vector3, p2: Vector3, p3: Vector3) -> Array:
 # more compact compressing all three functions into one that just accepts 5
 # vector3s and outputs one.
 ################################################################################
-func get_line_plane_intersection(line, plane) -> Vector3:
+func get_line_plane_intersection(line : Array, plane : Array) -> Vector3:
 	var a = line[0][0]
 	var b = line[0][1]
 	var c = line[1][0]
@@ -79,17 +79,17 @@ func get_line_plane_intersection(line, plane) -> Vector3:
 
 
 ################################################################################
-# Find the intersection between a point emitted from the camera based on where
-# the mouse is on the screen, and a pre-defined plane.
+# Find the intersection between a point emitted from the camera based checked where
+# the mouse is checked the screen, and a pre-defined plane.
 #
 # TODO: Maybe move the global self.camera into an argument for this function
 # TODO: Maybe move the global self.plane into an argument for this function
 ################################################################################
 func get_offset_coordinates(event) -> Vector3:
-	var start_coordinate = self.camera.project_ray_origin(event.position)
-	var direction = self.camera.project_ray_normal(event.position)
+	var start_coordinate : Vector3 = camera.project_ray_origin(event.position)
+	var direction: Vector3 = camera.project_ray_normal(event.position)
 
-	var line = get_line_formulas(start_coordinate, start_coordinate+direction)
-	var intersection = get_line_plane_intersection(line, self.plane)
+	var line : Array = get_line_formulas(start_coordinate, start_coordinate+direction)
+	var intersection : Vector3 = get_line_plane_intersection(line, plane)
 
 	return intersection

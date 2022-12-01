@@ -1,11 +1,11 @@
-[gd_resource type="ShaderMaterial" load_steps=2 format=2]
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://0inlifxp2wm7"]
 
-[sub_resource type="Shader" id=14]
+[sub_resource type="Shader" id="14"]
 code = "shader_type spatial;
-render_mode unshaded, depth_test_disable;
+render_mode unshaded, depth_test_disabled;
 
-uniform vec4 default_color: hint_color;
-uniform vec4 hover_color: hint_color;
+uniform vec4 default_color: source_color;
+uniform vec4 hover_color: source_color;
 uniform bool hovering;
 
 
@@ -21,7 +21,8 @@ void fragment() {
 
 [resource]
 resource_local_to_scene = true
-shader = SubResource( 14 )
-shader_param/default_color = Color( 1, 1, 1, 0.313726 )
-shader_param/hover_color = Color( 1, 1, 1, 1 )
-shader_param/hovering = false
+render_priority = 0
+shader = SubResource("14")
+shader_parameter/default_color = Color(0, 0, 0, 1)
+shader_parameter/hover_color = null
+shader_parameter/hovering = null

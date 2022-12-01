@@ -1,34 +1,34 @@
-extends Spatial
+extends Node3D
 
-var camera: Camera
+var camera: Camera3D
 var selected: bool = false
 
 func clear_selection():
 	self.selected = false
-	$Node/CollisionShape.disabled = false
+	$Node/CollisionShape3D.disabled = false
 	$Plane.hide()
-	$Plane/CollisionShape.disabled = true
+	$Plane/CollisionShape3D.disabled = true
 	$Pillar.hide()
-	$Pillar/CollisionShape.disabled = true
+	$Pillar/CollisionShape3D.disabled = true
 
 func select(camera, event):
 	self.selected = true
 	self.camera = camera
-	$Node/CollisionShape.disabled = true
+	$Node/CollisionShape3D.disabled = true
 	$Plane.show()
-	$Plane/CollisionShape.disabled = false
+	$Plane/CollisionShape3D.disabled = false
 	$Pillar.show()
-	$Pillar/CollisionShape.disabled = false
+	$Pillar/CollisionShape3D.disabled = false
 
 
 ################################################################################
 # Handle resizing the control nodes so that no matter how far away from the
-# camera they appear to be the same pixel size on-screen. Without this it will
-# be harder to click on the arrows for things that are farther awawy.
+# camera they appear to be the same pixel size checked-screen. Without this it will
+# be harder to click checked the arrows for things that are farther awawy.
 ################################################################################
 func _process(delta):
-	if (self.selected):
-		var distance_to_camera = self.translation.distance_to(camera.translation) / 5
+	if (selected):
+		var distance_to_camera = position.distance_to(camera.position) / 5
 		var new_scale = Vector3(
 			distance_to_camera,
 			distance_to_camera,

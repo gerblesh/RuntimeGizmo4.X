@@ -1,8 +1,8 @@
 extends "res://PlaneDragmove.gd"
 
-var selected:bool = false;
-var start_position: Vector3
-var start_offset: Vector3
+var selected : bool = false;
+var start_position : Vector3
+var start_offset : Vector3
 
 ################################################################################
 # When selected create a plane that is perpendicular to the camera in the xz
@@ -10,20 +10,20 @@ var start_offset: Vector3
 # of the intersection between the mouse and this plane to determine the y-value
 # of the gizmo.
 ################################################################################
-func select(camera: Camera, event: InputEvent):
-	self.selected = true
-	self.start_position = self.get_parent().translation
-	self.camera = camera
+func select(_camera : Camera3D, event : InputEvent) -> void:
+	selected = true
+	start_position = self.get_parent().position
+	camera = _camera
 
-	var node_pos: Vector2 = Vector2(self.get_parent().translation.x, self.get_parent().translation.z)
+	var node_pos: Vector2 = Vector2(self.get_parent().position.x, self.get_parent().position.z)
 	var plane_range: Vector2 = Vector2(camera.transform.basis.z.x, camera.transform.basis.z.z)
 
 	var k = plane_range.x * node_pos.x + plane_range.y * node_pos.y
 
 	# In the planar format of [0]x + [1]y +[2]z = [3]
-	self.plane = [plane_range.x, 0, plane_range.y, k]
+	plane = [plane_range.x, 0, plane_range.y, k]
 
-	self.start_offset = get_offset_coordinates(event)
+	start_offset = get_offset_coordinates(event)
 
 	print("Pillar Selected")
 
@@ -31,7 +31,7 @@ func select(camera: Camera, event: InputEvent):
 ################################################################################
 #
 ################################################################################
-func _input(event:InputEvent):
+func _input(event : InputEvent):
 	if selected:
 		if event is InputEventMouseButton:
 			if not event.pressed and event.button_index == 1:
@@ -41,21 +41,21 @@ func _input(event:InputEvent):
 		elif event is InputEventMouseMotion:
 			var new_offset = get_offset_coordinates(event)
 
-			var delta_offset = new_offset - self.start_offset
+			var delta_offset = new_offset - start_offset
 			# Lock Changes to only the y axis
 			delta_offset.x = 0
 			delta_offset.z = 0
 
-			self.get_parent().translation = self.start_position + delta_offset
+			get_parent().position = start_position + delta_offset
 
 var hovered = false
 func hover():
-	self.hovered = true
+	hovered = true
 	_show_hover()
 func unhover():
-	self.hovered = false;
-	if !self.selected:
+	hovered = false;
+	if !selected:
 		_show_hover()
 
 func _show_hover():
-	$ArrowMesh.get_surface_material(0).set_shader_param("hovering", self.hovered)
+	$ArrowMesh.get_surface_override_material(0).hovering = hovered

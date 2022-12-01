@@ -1,0 +1,7 @@
+res://PointEdit.tscn
+res://Spatial.tscn
+res://YPlaneDragmove.gd
+res://PlaneDragmove.gd
+res://Spatial.gd
+res://XZPlaneDragmove.gd
+res://PointEdit.gd

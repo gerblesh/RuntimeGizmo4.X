@@ -1,0 +1,14 @@
+0b7126e0c6e86d3ec295a72f5aa6e0bd
+::res://::1669843961
+arrow_mesh.tres::ArrayMesh::-1::1669837075::0::1::::<><>::
+default_env.tres::Environment::-1::1669837075::0::1::::<><>::
+grid.png::CompressedTexture2D::7447394340547369591::1669836590::1669843667::1::::<><>::
+Hoverglow.tres::ShaderMaterial::1772045506599175800::1669843817::0::1::::<><>::
+icon.png::CompressedTexture2D::241284982597092552::1669836590::1669837084::1::::<><>::
+PlaneDragmove.gd::GDScript::-1::1669837075::0::1::::<>CharacterBody3D<>::
+PointEdit.gd::GDScript::-1::1669837075::0::1::::<>Node3D<>::
+PointEdit.tscn::PackedScene::4927700030164255252::1669843941::0::1::::<><>::res://PointEdit.gd<>res://YPlaneDragmove.gd<>res://XZPlaneDragmove.gd<>res://arrow_mesh.tres
+Spatial.gd::GDScript::-1::1669840415::0::1::::<>Node3D<>::
+Spatial.tscn::PackedScene::8320699273314649601::1669843703::0::1::::<><>::res://Spatial.gd<>uid://cchaq8ql0l57u<>uid://dedtq5gyvwgvv
+XZPlaneDragmove.gd::GDScript::-1::1669840643::0::1::::<>CharacterBody3D<>::
+YPlaneDragmove.gd::GDScript::-1::1669840698::0::1::::<>CharacterBody3D<>::
