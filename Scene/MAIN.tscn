@@ -1,12 +1,11 @@
-[gd_scene load_steps=21 format=3 uid="uid://dqsux31lpbpg8"]
+[gd_scene load_steps=19 format=3 uid="uid://caixcy07y4wca"]
 
-[ext_resource type="Script" path="res://GizmoManager.gd" id="1_rvopj"]
-[ext_resource type="Script" path="res://gizmo.gd" id="2_8xrix"]
-[ext_resource type="Texture2D" uid="uid://dedtq5gyvwgvv" path="res://grid.png" id="3_6jicl"]
-[ext_resource type="Script" path="res://YPlaneDragmove.gd" id="3_ufquv"]
-[ext_resource type="ArrayMesh" path="res://arrow_mesh.tres" id="4_cccp4"]
-[ext_resource type="Script" path="res://XZPlaneDragmove.gd" id="5_v0yu3"]
-[ext_resource type="Script" path="res://PointEdit.gd" id="6_8j4md"]
+[ext_resource type="Script" path="res://Script/GizmoManager.gd" id="1_k2tn5"]
+[ext_resource type="Script" path="res://Script/Gizmo.gd" id="2_tn7by"]
+[ext_resource type="Script" path="res://Script/YPlaneDragmove.gd" id="3_umru4"]
+[ext_resource type="ArrayMesh" path="res://Asset/Mesh/arrow_mesh.tres" id="4_643cl"]
+[ext_resource type="Script" path="res://Script/XZPlaneDragmove.gd" id="5_cg4mt"]
+[ext_resource type="Texture2D" uid="uid://dedtq5gyvwgvv" path="res://Asset/Image/grid.png" id="7_trlwg"]
 
 [sub_resource type="Shader" id="14"]
 code = "shader_type spatial;
@@ -72,12 +71,10 @@ glow_enabled = true
 
 [sub_resource type="SphereMesh" id="1"]
 
-[sub_resource type="SphereShape3D" id="2"]
-
 [sub_resource type="QuadMesh" id="QuadMesh_yp72h"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ncs8d"]
-albedo_texture = ExtResource("3_6jicl")
+albedo_texture = ExtResource("7_trlwg")
 albedo_texture_force_srgb = true
 uv1_scale = Vector3(0.1, 0.1, 0.1)
 uv1_triplanar = true
@@ -86,41 +83,39 @@ uv1_world_triplanar = true
 [node name="Node3D" type="Node3D"]
 
 [node name="GizmoController" type="Node3D" parent="." node_paths=PackedStringArray("selected_gizmo")]
-script = ExtResource("1_rvopj")
+script = ExtResource("1_k2tn5")
 selected_gizmo = NodePath("")
 
 [node name="Gizmo" type="Node3D" parent="GizmoController" node_paths=PackedStringArray("node")]
-script = ExtResource("2_8xrix")
+script = ExtResource("2_tn7by")
 node = NodePath("../../Points/PointEdit")
 
-[node name="Pillar" type="CharacterBody3D" parent="GizmoController/Gizmo" node_paths=PackedStringArray("parent")]
+[node name="Pillar" type="CharacterBody3D" parent="GizmoController/Gizmo"]
 collision_layer = 2
 collision_mask = 0
-script = ExtResource("3_ufquv")
-parent = NodePath("..")
+script = ExtResource("3_umru4")
 
 [node name="ArrowMesh" type="MeshInstance3D" parent="GizmoController/Gizmo/Pillar"]
-mesh = ExtResource("4_cccp4")
+mesh = ExtResource("4_643cl")
 surface_material_override/0 = SubResource("ShaderMaterial_qsx1b")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="GizmoController/Gizmo/Pillar"]
 shape = SubResource("10")
 
-[node name="Plane" type="CharacterBody3D" parent="GizmoController/Gizmo" node_paths=PackedStringArray("parent")]
+[node name="Plane" type="CharacterBody3D" parent="GizmoController/Gizmo"]
 collision_layer = 2
 collision_mask = 0
-script = ExtResource("5_v0yu3")
-parent = NodePath("..")
+script = ExtResource("5_cg4mt")
 
 [node name="ArrowMesh" type="MeshInstance3D" parent="GizmoController/Gizmo/Plane"]
 transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0, 0)
-mesh = ExtResource("4_cccp4")
+mesh = ExtResource("4_643cl")
 skeleton = NodePath("")
 surface_material_override/0 = SubResource("ShaderMaterial_iryfo")
 
 [node name="ArrowMesh2" type="MeshInstance3D" parent="GizmoController/Gizmo/Plane"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
-mesh = ExtResource("4_cccp4")
+mesh = ExtResource("4_643cl")
 skeleton = NodePath("")
 surface_material_override/0 = SubResource("ShaderMaterial_6tx7n")
 
@@ -140,17 +135,10 @@ transform = Transform3D(0.998872, -0.0156163, 0.044849, 0, 0.944388, 0.328834, -
 [node name="Points" type="Node3D" parent="."]
 
 [node name="PointEdit" type="Node3D" parent="Points"]
-script = ExtResource("6_8j4md")
 
-[node name="Node" type="CharacterBody3D" parent="Points/PointEdit"]
-collision_layer = 0
-collision_mask = 0
-
-[node name="NodeMesh" type="MeshInstance3D" parent="Points/PointEdit/Node"]
+[node name="NodeMesh" type="MeshInstance3D" parent="Points/PointEdit"]
 mesh = SubResource("1")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Points/PointEdit/Node"]
-shape = SubResource("2")
+skeleton = NodePath("")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(20, 0, 0, 0, -8.74228e-07, 20, 0, -20, -8.74228e-07, 0, 0, 0)

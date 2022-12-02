@@ -1,4 +1,4 @@
-extends "res://PlaneDragmove.gd"
+extends PlaneDragMove
 
 var selected : bool = false;
 var start_position : Vector3
@@ -26,14 +26,10 @@ func gizmo_tick(event : InputEvent) -> void:
 			var new_offset = get_offset_coordinates(event,camera,plane)
 			var delta_offset = new_offset - start_offset
 
-			# Catch if the new position is behind the camera, if so flip it
-			# because it is probably a horizon cross
 			var angle_diff = (camera.position - (self.start_position + delta_offset)).dot(camera.transform.basis.z)
 			if (angle_diff < 0):
 				# not colliding with plane, return
 				return
-#				print(angle_diff)
-#				delta_offset = -delta_offset + (self.start_position - camera.position)
 
 			# Lock unchecked y axis movement so this only is xz
 			delta_offset.y = 0
@@ -44,6 +40,9 @@ func gizmo_tick(event : InputEvent) -> void:
 
 			node.global_position = start_position + delta_offset
 			parent.global_position = node.global_position
+
+# some simple functions for hovering, should probably make these more portable
+
 var hovered : bool = false
 func hover() -> void:
 	hovered = true

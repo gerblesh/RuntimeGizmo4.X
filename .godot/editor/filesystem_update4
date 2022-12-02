@@ -1,7 +1,10 @@
 res://TranslateGizmo.tscn
-res://GizmoManager.gd
-res://Spatial.tscn
-res://YPlaneDragmove.gd
-res://PointEdit.tscn
+res://MAIN.tscn
 res://XZPlaneDragmove.gd
-res://PlaneDragmove.gd
+res://PointEdit.tscn
+res://Script/XZPlaneDragmove.gd
+res://Script/GizmoManager.gd
+res://Script/PlaneDragmove.gd
+res://Scene/PointEdit.tscn
+res://Scene/TranslateGizmo.tscn
+res://Scene/MAIN.tscn

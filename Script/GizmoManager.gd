@@ -6,9 +6,6 @@ var last_hover : Node3D
 const ray_length = 100
 
 
-#func _ready():
-#	selected_gizmo.select()
-#
 func cast_ray_from_camera(event: InputEvent,camera : Camera3D) -> Dictionary:
 	var start_coordinate : Vector3 = camera.project_ray_origin(event.position)
 	var end_coordinate : Vector3 = start_coordinate + camera.project_ray_normal(event.position) * ray_length

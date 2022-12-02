@@ -1,9 +1,9 @@
-[gd_scene load_steps=11 format=3 uid="uid://cpmiccf54ki4i"]
+[gd_scene load_steps=11 format=3 uid="uid://bn1g4i6auxn76"]
 
-[ext_resource type="Script" path="res://gizmo.gd" id="1_y7y7q"]
-[ext_resource type="Script" path="res://YPlaneDragmove.gd" id="2_p1uiy"]
-[ext_resource type="ArrayMesh" path="res://arrow_mesh.tres" id="3_0a4db"]
-[ext_resource type="Script" path="res://XZPlaneDragmove.gd" id="4_8wmlh"]
+[ext_resource type="Script" path="res://Script/Gizmo.gd" id="1_eqd3j"]
+[ext_resource type="Script" path="res://Script/YPlaneDragmove.gd" id="2_xeeov"]
+[ext_resource type="ArrayMesh" path="res://Asset/Mesh/arrow_mesh.tres" id="3_128yr"]
+[ext_resource type="Script" path="res://Script/XZPlaneDragmove.gd" id="4_75qan"]
 
 [sub_resource type="Shader" id="14"]
 code = "shader_type spatial;
@@ -55,13 +55,13 @@ shader_parameter/hovering = null
 height = 0.2
 
 [node name="Gizmo" type="Node3D"]
-script = ExtResource("1_y7y7q")
+script = ExtResource("1_eqd3j")
 
 [node name="Pillar" type="CharacterBody3D" parent="."]
-script = ExtResource("2_p1uiy")
+script = ExtResource("2_xeeov")
 
 [node name="ArrowMesh" type="MeshInstance3D" parent="Pillar"]
-mesh = ExtResource("3_0a4db")
+mesh = ExtResource("3_128yr")
 surface_material_override/0 = SubResource("ShaderMaterial_7uo3y")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Pillar"]
@@ -69,17 +69,17 @@ shape = SubResource("10")
 disabled = true
 
 [node name="Plane" type="CharacterBody3D" parent="."]
-script = ExtResource("4_8wmlh")
+script = ExtResource("4_75qan")
 
 [node name="ArrowMesh" type="MeshInstance3D" parent="Plane"]
 transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0, 0)
-mesh = ExtResource("3_0a4db")
+mesh = ExtResource("3_128yr")
 skeleton = NodePath("")
 surface_material_override/0 = SubResource("ShaderMaterial_tpqjv")
 
 [node name="ArrowMesh2" type="MeshInstance3D" parent="Plane"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
-mesh = ExtResource("3_0a4db")
+mesh = ExtResource("3_128yr")
 skeleton = NodePath("")
 surface_material_override/0 = SubResource("ShaderMaterial_iclo4")
 

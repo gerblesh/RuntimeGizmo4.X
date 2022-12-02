@@ -1,5 +1,7 @@
 extends CharacterBody3D
 
+class_name PlaneDragMove
+
 var plane : Array
 @export var parent : Node3D
 @onready var node : Node3D = parent.node
