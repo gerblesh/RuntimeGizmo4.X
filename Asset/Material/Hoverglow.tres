@@ -23,6 +23,6 @@ void fragment() {
 resource_local_to_scene = true
 render_priority = 0
 shader = SubResource("14")
-shader_parameter/default_color = Color(0, 0, 0, 1)
-shader_parameter/hover_color = null
+shader_parameter/default_color = Color(0.192157, 0.423529, 1, 1)
+shader_parameter/hover_color = Color(0.580392, 0.717647, 1, 1)
 shader_parameter/hovering = null
