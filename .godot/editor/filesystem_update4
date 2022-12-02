@@ -2,3 +2,4 @@ res://Scene/MAIN.tscn
 res://Asset/Mesh/arrow_mesh.tres
 res://Asset/Material/Hoverglow.tres
 res://Scene/TranslateGizmo.tscn
+res://Script/XZPlaneDragmove.gd

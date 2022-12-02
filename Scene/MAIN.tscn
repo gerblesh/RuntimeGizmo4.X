@@ -4,6 +4,17 @@
 [ext_resource type="PackedScene" uid="uid://bn1g4i6auxn76" path="res://Scene/TranslateGizmo.tscn" id="2_82nck"]
 [ext_resource type="Texture2D" uid="uid://dedtq5gyvwgvv" path="res://Asset/Image/grid.png" id="7_trlwg"]
 
+[sub_resource type="SphereMesh" id="1"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_yp72h"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ncs8d"]
+albedo_texture = ExtResource("7_trlwg")
+albedo_texture_force_srgb = true
+uv1_scale = Vector3(0.1, 0.1, 0.1)
+uv1_triplanar = true
+uv1_world_triplanar = true
+
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_uaf4a"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
 ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -16,17 +27,6 @@ background_mode = 2
 sky = SubResource("Sky_bxxr6")
 tonemap_mode = 2
 glow_enabled = true
-
-[sub_resource type="SphereMesh" id="1"]
-
-[sub_resource type="QuadMesh" id="QuadMesh_yp72h"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ncs8d"]
-albedo_texture = ExtResource("7_trlwg")
-albedo_texture_force_srgb = true
-uv1_scale = Vector3(0.1, 0.1, 0.1)
-uv1_triplanar = true
-uv1_world_triplanar = true
 
 [node name="Node3D" type="Node3D"]
 
@@ -41,9 +41,6 @@ node = NodePath("../../Points/PointEdit")
 transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 0, 0)
 shadow_enabled = true
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_gb07g")
-
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(0.998872, -0.0156163, 0.044849, 0, 0.944388, 0.328834, -0.04749, -0.328463, 0.943322, 0, 3.38286, 5.06084)
 
@@ -56,7 +53,7 @@ mesh = SubResource("1")
 skeleton = NodePath("")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(20, 0, 0, 0, -8.74228e-07, 20, 0, -20, -8.74228e-07, 0, 0, 0)
+transform = Transform3D(20, 0, 0, 0, -8.74228e-07, 20, 0, -20, -8.74228e-07, 0, 1.77576, 0)
 mesh = SubResource("QuadMesh_yp72h")
 surface_material_override/0 = SubResource("StandardMaterial3D_ncs8d")
 
@@ -64,3 +61,6 @@ surface_material_override/0 = SubResource("StandardMaterial3D_ncs8d")
 transform = Transform3D(20, 0, 0, 0, 20, 0, 0, 0, 20, 0, 10, -10)
 mesh = SubResource("QuadMesh_yp72h")
 surface_material_override/0 = SubResource("StandardMaterial3D_ncs8d")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_gb07g")

@@ -5,6 +5,7 @@ var selected : bool = false;
 var start_position : Vector3
 var start_offset : Vector3
 
+
 ################################################################################
 # When selected create a plane that is perpendicular to the camera in the xz
 # space and perfectly vertical in the y space. We will then use the y-value

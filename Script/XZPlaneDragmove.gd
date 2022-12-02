@@ -1,5 +1,7 @@
 extends PlaneDragMove
 
+@export var meshes : Array[NodePath]
+
 var selected : bool = false;
 var start_position : Vector3
 var start_offset : Vector3
@@ -55,5 +57,5 @@ func unhover() -> void:
 		_show_hover()
 
 func _show_hover():
-	$ArrowMesh.get_surface_override_material(0).hovering = hovered
-	$ArrowMesh2.get_surface_override_material(0).hovering = hovered
+	for mesh_path in meshes:
+		get_node(mesh_path).get_surface_override_material(0).hovering = hovered

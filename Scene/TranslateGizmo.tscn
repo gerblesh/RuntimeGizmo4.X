@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://bn1g4i6auxn76"]
+[gd_scene load_steps=13 format=3 uid="uid://bn1g4i6auxn76"]
 
 [ext_resource type="Script" path="res://Script/Gizmo.gd" id="1_eqd3j"]
 [ext_resource type="Script" path="res://Script/YPlaneDragmove.gd" id="2_xeeov"]
@@ -25,6 +25,14 @@ void fragment() {
 }
 "
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_nc01o"]
+resource_local_to_scene = true
+render_priority = 0
+shader = SubResource("14")
+shader_parameter/default_color = Color(0.815686, 0, 0, 1)
+shader_parameter/hover_color = Color(1, 0.521569, 0.521569, 1)
+shader_parameter/hovering = null
+
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_s6f5t"]
 resource_local_to_scene = true
 render_priority = 0
@@ -37,19 +45,34 @@ shader_parameter/hovering = null
 height = 1.0
 radius = 0.1
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_nc01o"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_s3it6"]
+size = Vector3(0.3, 0.05, 0.3)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_yjlyt"]
+size = Vector2(0.1, 0.1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_t7h21"]
 resource_local_to_scene = true
 render_priority = 0
 shader = SubResource("14")
-shader_parameter/default_color = Color(0.815686, 0, 0, 1)
-shader_parameter/hover_color = Color(1, 0.521569, 0.521569, 1)
+shader_parameter/default_color = Color(0, 1, 0, 1)
+shader_parameter/hover_color = Color(0.509804, 1, 0.509804, 1)
 shader_parameter/hovering = null
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_s3it6"]
-size = Vector3(1, 0.1, 1)
 
 [node name="Gizmo" type="Node3D"]
 script = ExtResource("1_eqd3j")
+
+[node name="ArrowMesh" type="MeshInstance3D" parent="."]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0, 0)
+mesh = ExtResource("3_128yr")
+skeleton = NodePath("")
+surface_material_override/0 = SubResource("ShaderMaterial_nc01o")
+
+[node name="ArrowMesh2" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
+mesh = ExtResource("3_128yr")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("5_3mp2f")
 
 [node name="Pillar" type="CharacterBody3D" parent="." node_paths=PackedStringArray("parent")]
 collision_layer = 2
@@ -69,20 +92,14 @@ shape = SubResource("10")
 collision_layer = 2
 collision_mask = 0
 script = ExtResource("4_75qan")
+meshes = [NodePath("MeshInstance3D")]
 parent = NodePath("..")
-
-[node name="ArrowMesh" type="MeshInstance3D" parent="Plane"]
-transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0, 0)
-mesh = ExtResource("3_128yr")
-skeleton = NodePath("")
-surface_material_override/0 = SubResource("ShaderMaterial_nc01o")
-
-[node name="ArrowMesh2" type="MeshInstance3D" parent="Plane"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
-mesh = ExtResource("3_128yr")
-skeleton = NodePath("")
-surface_material_override/0 = ExtResource("5_3mp2f")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Plane"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0, 0.5)
 shape = SubResource("BoxShape3D_s3it6")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Plane"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0, 0.5)
+mesh = SubResource("PlaneMesh_yjlyt")
+surface_material_override/0 = SubResource("ShaderMaterial_t7h21")
