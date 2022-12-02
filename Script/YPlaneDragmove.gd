@@ -1,4 +1,4 @@
-extends "res://PlaneDragmove.gd"
+extends PlaneDragMove
 
 
 var selected : bool = false;
