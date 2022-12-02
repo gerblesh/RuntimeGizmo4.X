@@ -52,10 +52,8 @@ func _input(event : InputEvent) -> void:
 		# clickable items.
 		var result : Dictionary = cast_ray_from_camera(event,camera)
 
-		# If the ray intersects with a node then the mouse is visually hovering
-		# over something.
+		# If the ray intersects with a node then the mouse is visually hovering over something
 		if result:
-			print("yayyy")
 			# If there is something that is currently hovered then unhover it
 			if is_instance_valid(last_hover) and last_hover != result.collider:
 				last_hover.unhover()
