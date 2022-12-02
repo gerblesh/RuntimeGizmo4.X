@@ -90,10 +90,11 @@ selected_gizmo = NodePath("")
 script = ExtResource("2_tn7by")
 node = NodePath("../../Points/PointEdit")
 
-[node name="Pillar" type="CharacterBody3D" parent="GizmoController/Gizmo"]
+[node name="Pillar" type="CharacterBody3D" parent="GizmoController/Gizmo" node_paths=PackedStringArray("parent")]
 collision_layer = 2
 collision_mask = 0
 script = ExtResource("3_umru4")
+parent = NodePath("..")
 
 [node name="ArrowMesh" type="MeshInstance3D" parent="GizmoController/Gizmo/Pillar"]
 mesh = ExtResource("4_643cl")
@@ -102,10 +103,11 @@ surface_material_override/0 = SubResource("ShaderMaterial_qsx1b")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="GizmoController/Gizmo/Pillar"]
 shape = SubResource("10")
 
-[node name="Plane" type="CharacterBody3D" parent="GizmoController/Gizmo"]
+[node name="Plane" type="CharacterBody3D" parent="GizmoController/Gizmo" node_paths=PackedStringArray("parent")]
 collision_layer = 2
 collision_mask = 0
 script = ExtResource("5_cg4mt")
+parent = NodePath("..")
 
 [node name="ArrowMesh" type="MeshInstance3D" parent="GizmoController/Gizmo/Plane"]
 transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0, 0)
