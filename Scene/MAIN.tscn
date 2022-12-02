@@ -1,60 +1,8 @@
-[gd_scene load_steps=19 format=3 uid="uid://caixcy07y4wca"]
+[gd_scene load_steps=10 format=3 uid="uid://caixcy07y4wca"]
 
 [ext_resource type="Script" path="res://Script/GizmoManager.gd" id="1_k2tn5"]
-[ext_resource type="Script" path="res://Script/Gizmo.gd" id="2_tn7by"]
-[ext_resource type="Script" path="res://Script/YPlaneDragmove.gd" id="3_umru4"]
-[ext_resource type="ArrayMesh" path="res://Asset/Mesh/arrow_mesh.tres" id="4_643cl"]
-[ext_resource type="Script" path="res://Script/XZPlaneDragmove.gd" id="5_cg4mt"]
+[ext_resource type="PackedScene" uid="uid://bn1g4i6auxn76" path="res://Scene/TranslateGizmo.tscn" id="2_82nck"]
 [ext_resource type="Texture2D" uid="uid://dedtq5gyvwgvv" path="res://Asset/Image/grid.png" id="7_trlwg"]
-
-[sub_resource type="Shader" id="14"]
-code = "shader_type spatial;
-render_mode unshaded, depth_test_disabled;
-
-uniform vec4 default_color: source_color;
-uniform vec4 hover_color: source_color;
-uniform bool hovering;
-
-
-void fragment() {
-	ALBEDO = default_color.rgb;
-	ALPHA = default_color.a;
-	if (hovering) {
-		ALBEDO = hover_color.rgb;
-		ALPHA = hover_color.a;
-	}
-}
-"
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_qsx1b"]
-resource_local_to_scene = true
-render_priority = 0
-shader = SubResource("14")
-shader_parameter/default_color = Color(0, 0.764706, 0, 1)
-shader_parameter/hover_color = Color(0.686275, 1, 0.658824, 1)
-shader_parameter/hovering = null
-
-[sub_resource type="CylinderShape3D" id="10"]
-radius = 0.1
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_iryfo"]
-resource_local_to_scene = true
-render_priority = 0
-shader = SubResource("14")
-shader_parameter/default_color = Color(0.686275, 0.176471, 0, 1)
-shader_parameter/hover_color = Color(1, 0.392157, 0.231373, 1)
-shader_parameter/hovering = null
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_6tx7n"]
-resource_local_to_scene = true
-render_priority = 0
-shader = SubResource("14")
-shader_parameter/default_color = Color(0.160784, 0.392157, 1, 1)
-shader_parameter/hover_color = Color(0.478431, 0.647059, 1, 1)
-shader_parameter/hovering = null
-
-[sub_resource type="CylinderShape3D" id="13"]
-height = 0.2
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_uaf4a"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -86,43 +34,8 @@ uv1_world_triplanar = true
 script = ExtResource("1_k2tn5")
 selected_gizmo = NodePath("")
 
-[node name="Gizmo" type="Node3D" parent="GizmoController" node_paths=PackedStringArray("node")]
-script = ExtResource("2_tn7by")
+[node name="Gizmo" parent="GizmoController" node_paths=PackedStringArray("node") instance=ExtResource("2_82nck")]
 node = NodePath("../../Points/PointEdit")
-
-[node name="Pillar" type="CharacterBody3D" parent="GizmoController/Gizmo" node_paths=PackedStringArray("parent")]
-collision_layer = 2
-collision_mask = 0
-script = ExtResource("3_umru4")
-parent = NodePath("..")
-
-[node name="ArrowMesh" type="MeshInstance3D" parent="GizmoController/Gizmo/Pillar"]
-mesh = ExtResource("4_643cl")
-surface_material_override/0 = SubResource("ShaderMaterial_qsx1b")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="GizmoController/Gizmo/Pillar"]
-shape = SubResource("10")
-
-[node name="Plane" type="CharacterBody3D" parent="GizmoController/Gizmo" node_paths=PackedStringArray("parent")]
-collision_layer = 2
-collision_mask = 0
-script = ExtResource("5_cg4mt")
-parent = NodePath("..")
-
-[node name="ArrowMesh" type="MeshInstance3D" parent="GizmoController/Gizmo/Plane"]
-transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0, 0)
-mesh = ExtResource("4_643cl")
-skeleton = NodePath("")
-surface_material_override/0 = SubResource("ShaderMaterial_iryfo")
-
-[node name="ArrowMesh2" type="MeshInstance3D" parent="GizmoController/Gizmo/Plane"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
-mesh = ExtResource("4_643cl")
-skeleton = NodePath("")
-surface_material_override/0 = SubResource("ShaderMaterial_6tx7n")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="GizmoController/Gizmo/Plane"]
-shape = SubResource("13")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 0, 0)
