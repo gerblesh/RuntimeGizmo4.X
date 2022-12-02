@@ -1,5 +1,6 @@
 extends "res://PlaneDragmove.gd"
 
+
 var selected : bool = false;
 var start_position : Vector3
 var start_offset : Vector3
@@ -10,20 +11,21 @@ var start_offset : Vector3
 # of the intersection between the mouse and this plane to determine the y-value
 # of the gizmo.
 ################################################################################
+
+
 func select(_camera : Camera3D, event : InputEvent) -> void:
 	selected = true
-	start_position = self.get_parent().position
-	camera = _camera
+	start_position = node.global_position
 
-	var node_pos: Vector2 = Vector2(self.get_parent().position.x, self.get_parent().position.z)
-	var plane_range: Vector2 = Vector2(camera.transform.basis.z.x, camera.transform.basis.z.z)
+	var node_pos: Vector2 = Vector2(node.global_position.x, node.global_position.z)
+	var plane_range: Vector2 = Vector2(camera.global_transform.basis.z.x, camera.global_transform.basis.z.z)
 
 	var k = plane_range.x * node_pos.x + plane_range.y * node_pos.y
 
 	# In the planar format of [0]x + [1]y +[2]z = [3]
 	plane = [plane_range.x, 0, plane_range.y, k]
 
-	start_offset = get_offset_coordinates(event)
+	start_offset = get_offset_coordinates(event,camera,plane)
 
 	print("Pillar Selected")
 
@@ -31,22 +33,17 @@ func select(_camera : Camera3D, event : InputEvent) -> void:
 ################################################################################
 #
 ################################################################################
-func _input(event : InputEvent):
-	if selected:
-		if event is InputEventMouseButton:
-			if not event.pressed and event.button_index == 1:
-				print("Deselected plane")
-				selected = false
-				_show_hover()
-		elif event is InputEventMouseMotion:
-			var new_offset = get_offset_coordinates(event)
+func gizmo_tick(event : InputEvent):
+	if event is InputEventMouseMotion:
+		var new_offset = get_offset_coordinates(event,camera,plane)
+		var delta_offset = new_offset - start_offset
 
-			var delta_offset = new_offset - start_offset
-			# Lock Changes to only the y axis
-			delta_offset.x = 0
-			delta_offset.z = 0
+		# Lock Changes to only the y axis
+		delta_offset.x = 0
+		delta_offset.z = 0
 
-			get_parent().position = start_position + delta_offset
+		node.global_position = start_position + delta_offset
+		parent.global_position = node.global_position
 
 var hovered = false
 func hover():

@@ -1,7 +1,9 @@
 extends CharacterBody3D
 
-var camera: Camera3D
-var plane: Array
+var plane : Array
+@export var parent : Node3D
+@onready var node : Node3D = parent.node
+@onready var camera : Camera3D = get_viewport().get_camera_3d()
 
 ################################################################################
 # Get the definition of a line in the format
@@ -85,11 +87,11 @@ func get_line_plane_intersection(line : Array, plane : Array) -> Vector3:
 # TODO: Maybe move the global self.camera into an argument for this function
 # TODO: Maybe move the global self.plane into an argument for this function
 ################################################################################
-func get_offset_coordinates(event) -> Vector3:
-	var start_coordinate : Vector3 = camera.project_ray_origin(event.position)
-	var direction: Vector3 = camera.project_ray_normal(event.position)
+func get_offset_coordinates(event : InputEvent, _camera : Camera3D, _plane : Array) -> Vector3:
+	var start_coordinate : Vector3 = _camera.project_ray_origin(event.position)
+	var direction: Vector3 = _camera.project_ray_normal(event.position)
 
 	var line : Array = get_line_formulas(start_coordinate, start_coordinate+direction)
-	var intersection : Vector3 = get_line_plane_intersection(line, plane)
+	var intersection : Vector3 = get_line_plane_intersection(line, _plane)
 
 	return intersection
