@@ -6,6 +6,10 @@
 [ext_resource type="Script" path="res://Script/XZPlaneDragmove.gd" id="4_75qan"]
 [ext_resource type="Material" uid="uid://0inlifxp2wm7" path="res://Asset/Material/Hoverglow.tres" id="5_3mp2f"]
 
+[sub_resource type="CylinderShape3D" id="10"]
+height = 1.0
+radius = 0.1
+
 [sub_resource type="Shader" id="14"]
 code = "shader_type spatial;
 render_mode unshaded, depth_test_disabled;
@@ -41,12 +45,8 @@ shader_parameter/default_color = Color(0, 1, 0, 1)
 shader_parameter/hover_color = Color(0.509804, 1, 0.509804, 1)
 shader_parameter/hovering = null
 
-[sub_resource type="CylinderShape3D" id="10"]
-height = 1.0
-radius = 0.1
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_s3it6"]
-size = Vector3(0.3, 0.05, 0.3)
+[sub_resource type="BoxShape3D" id="BoxShape3D_ffmxk"]
+size = Vector3(0.3, 0.1, 0.3)
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_yjlyt"]
 size = Vector2(0.1, 0.1)
@@ -59,47 +59,76 @@ shader_parameter/default_color = Color(0, 1, 0, 1)
 shader_parameter/hover_color = Color(0.509804, 1, 0.509804, 1)
 shader_parameter/hovering = null
 
-[node name="Gizmo" type="Node3D"]
+[node name="GizmoContainer" type="Node3D"]
 script = ExtResource("1_eqd3j")
 
-[node name="ArrowMesh" type="MeshInstance3D" parent="."]
+[node name="X" type="StaticBody3D" parent="." node_paths=PackedStringArray("parent")]
+collision_layer = 2
+collision_mask = 0
+script = ExtResource("4_75qan")
+meshes = [NodePath("ArrowMesh")]
+plane_normal = Vector3(0, 1, 0)
+axis = Vector3(1, 0, 0)
+parent = NodePath("..")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="X"]
+transform = Transform3D(-4.37114e-08, 1, -4.37114e-08, 0, -4.37114e-08, -1, -1, -4.37114e-08, 1.91069e-15, -0.5, 0, 0)
+shape = SubResource("10")
+
+[node name="ArrowMesh" type="MeshInstance3D" parent="X"]
 transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0, 0)
 mesh = ExtResource("3_128yr")
 skeleton = NodePath("")
 surface_material_override/0 = SubResource("ShaderMaterial_nc01o")
 
-[node name="ArrowMesh2" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
-mesh = ExtResource("3_128yr")
-skeleton = NodePath("")
-surface_material_override/0 = ExtResource("5_3mp2f")
-
-[node name="Pillar" type="CharacterBody3D" parent="." node_paths=PackedStringArray("parent")]
+[node name="Y" type="StaticBody3D" parent="." node_paths=PackedStringArray("parent")]
 collision_layer = 2
 collision_mask = 0
 script = ExtResource("2_xeeov")
 parent = NodePath("..")
 
-[node name="ArrowMesh" type="MeshInstance3D" parent="Pillar"]
+[node name="ArrowMesh" type="MeshInstance3D" parent="Y"]
 mesh = ExtResource("3_128yr")
 surface_material_override/0 = SubResource("ShaderMaterial_s6f5t")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Pillar"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Y"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 shape = SubResource("10")
 
-[node name="Plane" type="CharacterBody3D" parent="." node_paths=PackedStringArray("parent")]
+[node name="Z" type="StaticBody3D" parent="." node_paths=PackedStringArray("parent")]
 collision_layer = 2
 collision_mask = 0
 script = ExtResource("4_75qan")
-meshes = [NodePath("MeshInstance3D")]
+meshes = [NodePath("ArrowMesh")]
+plane_normal = Vector3(0, 1, 0)
+axis = Vector3(0, 0, 1)
 parent = NodePath("..")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Plane"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0, 0.5)
-shape = SubResource("BoxShape3D_s3it6")
+[node name="ArrowMesh" type="MeshInstance3D" parent="Z"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
+mesh = ExtResource("3_128yr")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("5_3mp2f")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Plane"]
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Z"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0.5)
+shape = SubResource("10")
+
+[node name="XZ" type="StaticBody3D" parent="." node_paths=PackedStringArray("parent")]
+collision_layer = 2
+collision_mask = 0
+script = ExtResource("4_75qan")
+meshes = [NodePath("PlaneMesh")]
+plane_normal = Vector3(0, 1, 0)
+axis = Vector3(1, 0, 1)
+parent = NodePath("..")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="XZ"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0, 0.5)
+shape = SubResource("BoxShape3D_ffmxk")
+
+[node name="PlaneMesh" type="MeshInstance3D" parent="XZ"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0, 0.5)
 mesh = SubResource("PlaneMesh_yjlyt")
+skeleton = NodePath("../../Z")
 surface_material_override/0 = SubResource("ShaderMaterial_t7h21")

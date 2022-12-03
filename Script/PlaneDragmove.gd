@@ -1,8 +1,8 @@
-extends CharacterBody3D
+extends StaticBody3D
 
 class_name PlaneDragMove
 
-var plane : Array
+var plane : Array[float]
 @export var parent : Node3D
 @onready var node : Node3D = parent.node
 @onready var camera : Camera3D = get_viewport().get_camera_3d()

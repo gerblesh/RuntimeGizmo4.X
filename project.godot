@@ -9,7 +9,7 @@
 config_version=5
 
 _global_script_classes=[{
-"base": "CharacterBody3D",
+"base": "StaticBody3D",
 "class": &"PlaneDragMove",
 "language": &"GDScript",
 "path": "res://Script/PlaneDragmove.gd"

@@ -1,5 +1,4 @@
-res://Scene/MAIN.tscn
+res://Scene/TranslateGizmo.tscn
 res://Asset/Mesh/arrow_mesh.tres
 res://Asset/Material/Hoverglow.tres
-res://Scene/TranslateGizmo.tscn
-res://Script/XZPlaneDragmove.gd
+res://Scene/MAIN.tscn

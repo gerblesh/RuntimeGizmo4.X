@@ -24,7 +24,7 @@ func select(_camera : Camera3D, event : InputEvent) -> void:
 	var k = plane_range.x * node_pos.x + plane_range.y * node_pos.y
 
 	# In the planar format of [0]x + [1]y +[2]z = [3]
-	plane = [plane_range.x, 0, plane_range.y, k]
+	plane = [plane_range.x, 0.0, plane_range.y, k]
 
 	start_offset = get_offset_coordinates(event,camera,plane)
 
@@ -35,16 +35,15 @@ func select(_camera : Camera3D, event : InputEvent) -> void:
 #
 ################################################################################
 func gizmo_tick(event : InputEvent):
-	if event is InputEventMouseMotion:
-		var new_offset = get_offset_coordinates(event,camera,plane)
-		var delta_offset = new_offset - start_offset
+	var new_offset = get_offset_coordinates(event,camera,plane)
+	var delta_offset = new_offset - start_offset
 
-		# Lock Changes to only the y axis
-		delta_offset.x = 0
-		delta_offset.z = 0
+	# Lock Changes to only the y axis
+	delta_offset.x = 0
+	delta_offset.z = 0
 
-		node.global_position = start_position + delta_offset
-		parent.global_position = node.global_position
+	node.global_position = start_position + delta_offset
+	parent.global_position = node.global_position
 
 var hovered = false
 func hover():
