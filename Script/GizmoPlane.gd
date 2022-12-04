@@ -1,5 +1,7 @@
 extends PlaneDragMove
 
+class_name PlaneGizmo
+
 @export var meshes : Array[NodePath]
 @export var plane_normal : Vector3
 @export var axis : Vector3
@@ -27,7 +29,10 @@ func gizmo_tick(event : InputEvent) -> void:
 	var angle_diff : float = (camera.global_position - (start_position + delta_offset)).dot(camera.global_transform.basis.z)
 	if (angle_diff < 0):
 		# not colliding with plane, return
-		return
+		
+		delta_offset = -delta_offset + (start_position - camera.global_position)
+		
+#		return
 
 	# Lock unchecked y axis movement so this only is xz
 	delta_offset *= axis
@@ -36,7 +41,7 @@ func gizmo_tick(event : InputEvent) -> void:
 	if delta_offset.length_squared() > 10000:
 		delta_offset = delta_offset * 100/delta_offset.length()
 
-	apply_gizmo(start_position + delta_offset)
+	apply_transform(start_position + delta_offset)
 
 # some simple functions for hovering, should probably make these more portable
 
@@ -54,5 +59,7 @@ func _show_hover():
 	for mesh_path in meshes:
 		get_node(mesh_path).get_surface_override_material(0).hovering = hovered
 
-func apply_gizmo(_position : Vector3):
+# passthroughs
+
+func apply_transform(_position : Vector3):
 	pass

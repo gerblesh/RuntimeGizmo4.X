@@ -1,10 +1,10 @@
 [gd_scene load_steps=10 format=3 uid="uid://caixcy07y4wca"]
 
 [ext_resource type="Script" path="res://Script/GizmoManager.gd" id="1_k2tn5"]
-[ext_resource type="PackedScene" uid="uid://bn1g4i6auxn76" path="res://Scene/TranslateGizmo.tscn" id="2_82nck"]
+[ext_resource type="PackedScene" uid="uid://32wolxvo2dky" path="res://Scene/TranslateGizmo.tscn" id="2_82nck"]
 [ext_resource type="Texture2D" uid="uid://dedtq5gyvwgvv" path="res://Asset/Image/grid.png" id="7_trlwg"]
 
-[sub_resource type="SphereMesh" id="1"]
+[sub_resource type="BoxMesh" id="BoxMesh_mkvvk"]
 
 [sub_resource type="QuadMesh" id="QuadMesh_yp72h"]
 
@@ -45,11 +45,17 @@ shadow_enabled = true
 transform = Transform3D(0.998872, -0.0156163, 0.044849, 0, 0.944388, 0.328834, -0.04749, -0.328463, 0.943322, 0, 3.38286, 5.06084)
 
 [node name="Points" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.13921, 0)
 
 [node name="PointEdit" type="Node3D" parent="Points"]
 
 [node name="NodeMesh" type="MeshInstance3D" parent="Points/PointEdit"]
-mesh = SubResource("1")
+mesh = SubResource("BoxMesh_mkvvk")
+skeleton = NodePath("")
+
+[node name="NodeMesh2" type="MeshInstance3D" parent="Points/PointEdit"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.353177, -0.290919, 0.433152, 0)
+mesh = SubResource("BoxMesh_mkvvk")
 skeleton = NodePath("")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]

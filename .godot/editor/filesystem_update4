@@ -1,6 +1,5 @@
-res://Scene/TranslateGizmo.tscn
+res://Scene/MAIN.tscn
 res://Asset/Mesh/arrow_mesh.tres
 res://Asset/Material/Hoverglow.tres
-res://Scene/MAIN.tscn
-res://Script/GizmoManager.gd
-res://Script/GizmoPlane.gd
+res://Scene/TranslateGizmo.tscn
+res://Scene/YPlaneDragRotate.gd

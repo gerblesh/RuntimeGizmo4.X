@@ -13,9 +13,15 @@ _global_script_classes=[{
 "class": &"PlaneDragMove",
 "language": &"GDScript",
 "path": "res://Script/PlaneDragmove.gd"
+}, {
+"base": "PlaneDragMove",
+"class": &"PlaneGizmo",
+"language": &"GDScript",
+"path": "res://Script/GizmoPlane.gd"
 }]
 _global_script_class_icons={
-"PlaneDragMove": ""
+"PlaneDragMove": "",
+"PlaneGizmo": ""
 }
 
 [application]
