@@ -19,9 +19,10 @@ func cast_ray_from_camera(event: InputEvent,camera : Camera3D) -> Dictionary:
 ################################################################################
 # Hand the mouse input of clicking and hovering over an object
 ################################################################################
-func _input(event : InputEvent) -> void:
+func _unhandled_input(event : InputEvent) -> void:
 	# If the left mouse button is clicked.
 	if event is InputEventMouseButton and event.button_index == 1:
+		get_viewport().set_input_as_handled()
 		if not event.pressed:
 			if !is_instance_valid(selected_gizmo):
 				return
@@ -46,6 +47,7 @@ func _input(event : InputEvent) -> void:
 
 	# If the mouse is moved.
 	if event is InputEventMouseMotion:
+		get_viewport().set_input_as_handled()
 		if is_instance_valid(selected_gizmo):
 			selected_gizmo.gizmo_tick(event)
 		# Emit a ray from the mouse position to see if it intersects with any

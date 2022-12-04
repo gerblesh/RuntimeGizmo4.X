@@ -17,6 +17,7 @@ var start_offset : Vector3
 func select(_camera : Camera3D, event : InputEvent) -> void:
 	selected = true
 	start_position = node.global_position
+	camera = _camera
 
 	var node_pos: Vector2 = Vector2(node.global_position.x, node.global_position.z)
 	var plane_range: Vector2 = Vector2(camera.global_transform.basis.z.x, camera.global_transform.basis.z.z)
