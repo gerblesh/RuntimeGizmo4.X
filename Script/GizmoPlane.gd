@@ -13,7 +13,7 @@ func select(_camera : Camera3D, event : InputEvent) -> void:
 
 	# Define a flat plane at the height of the current y value
 	plane = [plane_normal.x, plane_normal.y, plane_normal.z, parent.position.y]
-	
+
 	start_offset = get_offset_coordinates(event,camera,plane)
 
 
@@ -23,13 +23,12 @@ func gizmo_tick(event : InputEvent) -> void:
 
 	var angle_diff : float = (camera.global_position - (start_position + delta_offset)).dot(camera.global_transform.basis.z)
 	if (angle_diff < 0):
-		# not colliding with plane, return
-		
+		# not colliding with plane, invert the thing
 		delta_offset = -delta_offset + (start_position - camera.global_position)
-		
-#		return
+
 
 	# Lock unchecked y axis movement so this only is xz
+#	delta_offset *= axis
 	delta_offset *= axis
 
 	# This should be a square instead of a circle

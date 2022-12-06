@@ -73,7 +73,7 @@ func get_line_plane_intersection(line : Array, plane : Array) -> Vector3:
 
 	var t_denominator = (g*b + h*d + i*f)
 	if t_denominator == 0:
-		return Vector3(INF, INF, INF)
+		return Vector3(0, 0, 0)
 	var t = (j - (g*a + h*c + i*e)) / t_denominator
 
 	return Vector3(a + (b * t), c + (d * t), e + (f * t))

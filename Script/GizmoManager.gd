@@ -3,7 +3,7 @@ extends Node3D
 @onready var camera : Camera3D = get_viewport().get_camera_3d()
 @export var selected_gizmo : Node3D
 var last_hover : Node3D
-const ray_length = 100
+const ray_length = 10000
 
 
 func cast_ray_from_camera(event: InputEvent,camera : Camera3D) -> Dictionary:
