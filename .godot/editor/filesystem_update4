@@ -1,2 +1,9 @@
-res://src/Scene/MAIN.tscn
+res://src/Scene/TranslateGizmo.tscn
 res://src/Asset/Mesh/arrow_mesh.tres
+res://src/Asset/Material/Red.tres
+res://src/Asset/Material/Green.tres
+res://src/Asset/Material/Blue.tres
+res://src/Asset/Material/Highlight.tres
+res://src/Scene/MAIN.tscn
+res://src/Script/Gizmo.gd
+res://src/Script/GizmoManager.gd

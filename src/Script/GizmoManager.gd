@@ -50,6 +50,7 @@ func _unhandled_input(event : InputEvent) -> void:
 		get_viewport().set_input_as_handled()
 		if is_instance_valid(selected_gizmo):
 			selected_gizmo.gizmo_tick(event)
+			return
 		# Emit a ray from the mouse position to see if it intersects with any
 		# clickable items.
 		var result : Dictionary = cast_ray_from_camera(event,camera)

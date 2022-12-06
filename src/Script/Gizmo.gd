@@ -2,6 +2,8 @@ extends StaticBody3D
 
 class_name Gizmo
 
+var highlight_mtl : StandardMaterial3D = preload("res://src/Asset/Material/Highlight.tres")
+
 @export var axis : Vector3
 @export var meshes : Array[NodePath]
 @export var parent : Node3D
@@ -35,7 +37,10 @@ func unhover() -> void:
 
 func _show_hover():
 	for mesh_path in meshes:
-		get_node(mesh_path).transparency = (float(hovered) * -0.15) + 0.2
+		if hovered:
+			get_node(mesh_path).material_overlay = highlight_mtl
+		else:
+			get_node(mesh_path).material_overlay = null
 
 # passthrough
 

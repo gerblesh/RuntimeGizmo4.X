@@ -1,7 +1,7 @@
 [gd_scene load_steps=13 format=3 uid="uid://kllw3qd1o8o0"]
 
 [ext_resource type="Script" path="res://src/Script/GizmoManager.gd" id="1_k2tn5"]
-[ext_resource type="PackedScene" path="res://src/Scene/TranslateGizmo.tscn" id="2_82nck"]
+[ext_resource type="PackedScene" uid="uid://ci2x7xygat74d" path="res://src/Scene/TranslateGizmo.tscn" id="2_82nck"]
 [ext_resource type="Script" path="res://src/Script/GizmoCamera.gd" id="3_lpag4"]
 [ext_resource type="Script" path="res://src/Script/EditorController.gd" id="3_peys5"]
 [ext_resource type="Texture2D" uid="uid://dedtq5gyvwgvv" path="res://src/Asset/Image/grid.png" id="7_trlwg"]
