@@ -7,7 +7,7 @@ func select(_camera : Camera3D, event : InputEvent) -> void:
 
 	# Define a flat plane at the height of the current y value
 	plane = [plane_normal.x, plane_normal.y, plane_normal.z, parent.position.y]
-	
+
 	start_offset = get_offset_coordinates(event,camera,plane)
 
 

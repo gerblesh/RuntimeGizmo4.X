@@ -12,6 +12,8 @@ var selected : bool = false
 var start_position : Vector3
 var start_offset : Vector3
 
+func _ready():
+	_show_hover()
 
 func select(_camera : Camera3D, event : InputEvent) -> void:
 	selected = true
@@ -33,7 +35,7 @@ func unhover() -> void:
 
 func _show_hover():
 	for mesh_path in meshes:
-		get_node(mesh_path).get_surface_override_material(0).hovering = hovered
+		get_node(mesh_path).transparency = (float(hovered) * -0.15) + 0.2
 
 # passthrough
 

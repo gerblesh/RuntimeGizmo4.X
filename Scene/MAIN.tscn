@@ -1,7 +1,7 @@
 [gd_scene load_steps=12 format=3 uid="uid://qywjlo351u2e"]
 
 [ext_resource type="Script" path="res://Script/GizmoManager.gd" id="1_k2tn5"]
-[ext_resource type="PackedScene" path="res://Scene/TranslateGizmo.tscn" id="2_82nck"]
+[ext_resource type="PackedScene" uid="uid://32wolxvo2dky" path="res://Scene/TranslateGizmo.tscn" id="2_82nck"]
 [ext_resource type="Script" path="res://Script/GizmoCamera.gd" id="3_lpag4"]
 [ext_resource type="Texture2D" uid="uid://dedtq5gyvwgvv" path="res://Asset/Image/grid.png" id="7_trlwg"]
 
@@ -59,6 +59,7 @@ stretch = true
 [node name="SubViewport" type="SubViewport" parent="SubViewportContainer"]
 transparent_bg = true
 handle_input_locally = false
+size = Vector2i(1152, 648)
 render_target_update_mode = 4
 
 [node name="GizmoCamera" type="Camera3D" parent="SubViewportContainer/SubViewport" node_paths=PackedStringArray("world_camera", "viewport")]
@@ -78,7 +79,7 @@ skeleton = NodePath("")
 surface_material_override/0 = SubResource("StandardMaterial3D_hnh4j")
 
 [node name="NodeMesh2" type="MeshInstance3D" parent="Points/PointEdit"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.353177, -0.290919, 0.433152, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.353177, -1.60483, 0.537497, 0)
 mesh = SubResource("BoxMesh_mkvvk")
 skeleton = NodePath("")
 
