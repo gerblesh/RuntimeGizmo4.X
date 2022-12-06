@@ -12,17 +12,17 @@ _global_script_classes=[{
 "base": "StaticBody3D",
 "class": &"Gizmo",
 "language": &"GDScript",
-"path": "res://Script/Gizmo.gd"
+"path": "res://src/Script/Gizmo.gd"
 }, {
 "base": "PlaneDragMove",
 "class": &"GizmoPlane",
 "language": &"GDScript",
-"path": "res://Script/GizmoPlane.gd"
+"path": "res://src/Script/GizmoPlane.gd"
 }, {
 "base": "Gizmo",
 "class": &"PlaneDragMove",
 "language": &"GDScript",
-"path": "res://Script/PlaneDragmove.gd"
+"path": "res://src/Script/PlaneDragmove.gd"
 }]
 _global_script_class_icons={
 "Gizmo": "",
@@ -33,9 +33,9 @@ _global_script_class_icons={
 [application]
 
 config/name="Gizmo"
-run/main_scene="res://Scene/MAIN.tscn"
+run/main_scene="res://src/Scene/MAIN.tscn"
 config/features=PackedStringArray("4.0")
-config/icon="res://Asset/Image/icon.png"
+config/icon="res://src/Asset/Image/icon.png"
 
 [input]
 

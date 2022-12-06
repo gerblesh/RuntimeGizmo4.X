@@ -1,10 +1,10 @@
-[gd_scene load_steps=14 format=3 uid="uid://32wolxvo2dky"]
+[gd_scene load_steps=14 format=3]
 
-[ext_resource type="Script" path="res://Script/GizmoContainer.gd" id="1_0eens"]
-[ext_resource type="Script" path="res://Script/YPlaneDragmove.gd" id="2_xeeov"]
-[ext_resource type="ArrayMesh" uid="uid://byiov5ft5e6sx" path="res://Asset/Mesh/arrow_mesh.tres" id="3_128yr"]
-[ext_resource type="Script" path="res://Script/XZPlaneDragmove.gd" id="4_75qan"]
-[ext_resource type="Script" path="res://Script/YPlaneDragRotate.gd" id="6_61c6a"]
+[ext_resource type="Script" path="res://src/Script/GizmoContainer.gd" id="1_0eens"]
+[ext_resource type="Script" path="res://src/Script/YPlaneDragmove.gd" id="2_xeeov"]
+[ext_resource type="ArrayMesh" uid="uid://byiov5ft5e6sx" path="res://src/Asset/Mesh/arrow_mesh.tres" id="3_128yr"]
+[ext_resource type="Script" path="res://src/Script/XZPlaneDragmove.gd" id="4_75qan"]
+[ext_resource type="Script" path="res://src/Script/YPlaneDragRotate.gd" id="6_61c6a"]
 
 [sub_resource type="CylinderShape3D" id="10"]
 height = 1.0

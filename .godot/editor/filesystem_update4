@@ -1,8 +1,2 @@
-res://Scene/TranslateGizmo.tscn
-res://Asset/Mesh/arrow_mesh.tres
-res://Script/XZPlaneDragmove.gd
-res://Scene/MAIN.tscn
-res://Script/GizmoManager.gd
-res://Script/GizmoPlane.gd
-res://Script/YPlaneDragRotate.gd
-res://Script/PlaneDragmove.gd
+res://src/Scene/MAIN.tscn
+res://src/Asset/Mesh/arrow_mesh.tres
