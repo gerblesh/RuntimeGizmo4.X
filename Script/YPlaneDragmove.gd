@@ -1,9 +1,7 @@
 extends PlaneDragMove
 
 
-var selected : bool = false;
-var start_position : Vector3
-var start_offset : Vector3
+
 
 
 ################################################################################
@@ -12,7 +10,6 @@ var start_offset : Vector3
 # of the intersection between the mouse and this plane to determine the y-value
 # of the gizmo.
 ################################################################################
-
 
 func select(_camera : Camera3D, event : InputEvent) -> void:
 	selected = true
@@ -45,15 +42,3 @@ func gizmo_tick(event : InputEvent):
 
 	node.global_position = start_position + delta_offset
 	parent.global_position = node.global_position
-
-var hovered = false
-func hover():
-	hovered = true
-	_show_hover()
-func unhover():
-	hovered = false;
-	if !selected:
-		_show_hover()
-
-func _show_hover():
-	$ArrowMesh.get_surface_override_material(0).hovering = hovered

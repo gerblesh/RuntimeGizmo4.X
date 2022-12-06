@@ -1,14 +1,9 @@
 extends PlaneDragMove
 
-class_name PlaneGizmo
+class_name GizmoPlane
 
-@export var meshes : Array[NodePath]
+
 @export var plane_normal : Vector3
-@export var axis : Vector3
-
-var selected : bool = false
-var start_position : Vector3
-var start_offset : Vector3
 
 
 func select(_camera : Camera3D, event : InputEvent) -> void:
@@ -42,23 +37,6 @@ func gizmo_tick(event : InputEvent) -> void:
 		delta_offset = delta_offset * 100/delta_offset.length()
 
 	apply_transform(start_position + delta_offset)
-
-# some simple functions for hovering, should probably make these more portable
-
-var hovered : bool = false
-func hover() -> void:
-	hovered = true
-	_show_hover()
-
-func unhover() -> void:
-	hovered = false;
-	if !selected:
-		_show_hover()
-
-func _show_hover():
-	for mesh_path in meshes:
-		get_node(mesh_path).get_surface_override_material(0).hovering = hovered
-
 # passthroughs
 
 func apply_transform(_position : Vector3):

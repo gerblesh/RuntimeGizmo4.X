@@ -1,11 +1,8 @@
-extends StaticBody3D
+extends Gizmo
 
 class_name PlaneDragMove
 
 var plane : Array[float]
-@export var parent : Node3D
-@onready var node : Node3D = parent.node
-@onready var camera : Camera3D
 
 ################################################################################
 # Get the definition of a line in the format

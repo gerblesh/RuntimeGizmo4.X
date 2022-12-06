@@ -1,5 +1,4 @@
-extends PlaneGizmo
-
+extends GizmoPlane
 
 func select(_camera : Camera3D, event : InputEvent) -> void:
 	selected = true

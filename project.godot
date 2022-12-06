@@ -10,18 +10,24 @@ config_version=5
 
 _global_script_classes=[{
 "base": "StaticBody3D",
+"class": &"Gizmo",
+"language": &"GDScript",
+"path": "res://Script/Gizmo.gd"
+}, {
+"base": "PlaneDragMove",
+"class": &"GizmoPlane",
+"language": &"GDScript",
+"path": "res://Script/GizmoPlane.gd"
+}, {
+"base": "Gizmo",
 "class": &"PlaneDragMove",
 "language": &"GDScript",
 "path": "res://Script/PlaneDragmove.gd"
-}, {
-"base": "PlaneDragMove",
-"class": &"PlaneGizmo",
-"language": &"GDScript",
-"path": "res://Script/GizmoPlane.gd"
 }]
 _global_script_class_icons={
-"PlaneDragMove": "",
-"PlaneGizmo": ""
+"Gizmo": "",
+"GizmoPlane": "",
+"PlaneDragMove": ""
 }
 
 [application]
@@ -33,6 +39,8 @@ config/icon="res://Asset/Image/icon.png"
 
 [layer_names]
 
+3d_render/layer_1="World"
+3d_render/layer_2="Gizmo"
 3d_physics/layer_1="world"
 3d_physics/layer_2="gizmo"
 
