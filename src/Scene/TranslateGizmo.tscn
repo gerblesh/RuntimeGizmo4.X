@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://ci2x7xygat74d"]
+[gd_scene load_steps=14 format=3 uid="uid://b727oxv0vpgmc"]
 
 [ext_resource type="Script" path="res://src/Script/GizmoContainer.gd" id="1_0eens"]
 [ext_resource type="Script" path="res://src/Script/YPlaneDragmove.gd" id="2_xeeov"]
@@ -6,11 +6,11 @@
 [ext_resource type="Material" uid="uid://cewu2sgdt3xgf" path="res://src/Asset/Material/Red.tres" id="3_ak3tg"]
 [ext_resource type="Script" path="res://src/Script/XZPlaneDragmove.gd" id="4_75qan"]
 [ext_resource type="Material" uid="uid://cwn5t20gledi0" path="res://src/Asset/Material/Green.tres" id="6_8lmp2"]
-[ext_resource type="Script" path="res://src/Script/YPlaneDragRotate.gd" id="6_61c6a"]
+[ext_resource type="Script" path="res://src/Script/DragRotate.gd" id="6_61c6a"]
 [ext_resource type="Material" uid="uid://115nx1m45ccs" path="res://src/Asset/Material/Blue.tres" id="7_htisc"]
 
 [sub_resource type="CylinderShape3D" id="10"]
-height = 1.0
+height = 0.3
 radius = 0.1
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ffmxk"]
@@ -41,7 +41,7 @@ meshes = [NodePath("ArrowMesh")]
 parent = NodePath("..")
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="TranslateX"]
-transform = Transform3D(-4.37114e-08, 1, -4.37114e-08, 0, -4.37114e-08, -1, -1, -4.37114e-08, 1.91069e-15, -0.5, 0, 0)
+transform = Transform3D(-4.37114e-08, 1, -4.37114e-08, 0, -4.37114e-08, -1, -1, -4.37114e-08, 1.91069e-15, -0.9, 0, 0)
 shape = SubResource("10")
 
 [node name="ArrowMesh" type="MeshInstance3D" parent="TranslateX"]
@@ -69,7 +69,7 @@ ignore_occlusion_culling = true
 mesh = ExtResource("3_128yr")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="TranslateY"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9, 0)
 shape = SubResource("10")
 
 [node name="TranslateZ" type="StaticBody3D" parent="." node_paths=PackedStringArray("parent")]
@@ -90,7 +90,7 @@ ignore_occlusion_culling = true
 mesh = ExtResource("3_128yr")
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="TranslateZ"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0.5)
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0.9)
 shape = SubResource("10")
 
 [node name="TranslateXZ" type="StaticBody3D" parent="." node_paths=PackedStringArray("parent")]

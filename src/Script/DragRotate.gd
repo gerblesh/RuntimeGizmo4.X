@@ -12,10 +12,9 @@ func select(_camera : Camera3D, event : InputEvent) -> void:
 
 func gizmo_tick(event : InputEvent):
 	var original_rotation : float = node_center.angle_to_point(event.position - event.relative)
-	var _rotation : float = node_center.angle_to_point(event.position)
-	var rads : float = _rotation - original_rotation
-	
-	var face : Vector3 = camera.global_position * axis
+	var new_rotation : float = node_center.angle_to_point(event.position)
+	var rads : float = new_rotation - original_rotation
+
 	var direction_to_camera : Vector3 = camera.global_position.direction_to(node.global_position)
 
 	var idx : int = axis.max_axis_index()

@@ -1,6 +1,6 @@
 extends PlaneDragMove
 
-
+class_name YPlaneGizmo
 
 
 
@@ -40,5 +40,8 @@ func gizmo_tick(event : InputEvent):
 	delta_offset.x = 0
 	delta_offset.z = 0
 
-	node.global_position = start_position + delta_offset
+	apply_transform(start_position + delta_offset)
+
+func apply_transform(_position : Vector3):
+	node.global_position = _position
 	parent.global_position = node.global_position

@@ -65,7 +65,7 @@ func _unhandled_input(event : InputEvent) -> void:
 			# Call the hover function checked the new object that is being hovered
 			last_hover = result.collider
 			last_hover.hover()
-			
+
 		# If nothing is hovere then try to unhover the object and set the
 		# currently hovered object to null.
 		elif is_instance_valid(last_hover):

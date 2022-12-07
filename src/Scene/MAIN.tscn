@@ -1,14 +1,12 @@
-[gd_scene load_steps=13 format=3 uid="uid://kllw3qd1o8o0"]
+[gd_scene load_steps=12 format=3 uid="uid://kllw3qd1o8o0"]
 
 [ext_resource type="Script" path="res://src/Script/GizmoManager.gd" id="1_k2tn5"]
-[ext_resource type="PackedScene" uid="uid://ci2x7xygat74d" path="res://src/Scene/TranslateGizmo.tscn" id="2_82nck"]
+[ext_resource type="PackedScene" uid="uid://dhw26u6w8er1k" path="res://src/Scene/ScaleGizmo.tscn" id="2_8ynu6"]
 [ext_resource type="Script" path="res://src/Script/GizmoCamera.gd" id="3_lpag4"]
 [ext_resource type="Script" path="res://src/Script/EditorController.gd" id="3_peys5"]
 [ext_resource type="Texture2D" uid="uid://dedtq5gyvwgvv" path="res://src/Asset/Image/grid.png" id="7_trlwg"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_mkvvk"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hnh4j"]
 
 [sub_resource type="QuadMesh" id="QuadMesh_yp72h"]
 
@@ -38,7 +36,7 @@ glow_enabled = true
 script = ExtResource("1_k2tn5")
 selected_gizmo = NodePath("")
 
-[node name="Gizmo" parent="GizmoController" node_paths=PackedStringArray("node") instance=ExtResource("2_82nck")]
+[node name="GizmoContainer" parent="GizmoController" node_paths=PackedStringArray("node") instance=ExtResource("2_8ynu6")]
 node = NodePath("../../Points/PointEdit")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
@@ -78,11 +76,11 @@ world_camera = NodePath("../../../EditorController/Head/WorldCamera")
 [node name="Points" type="Node3D" parent="."]
 
 [node name="PointEdit" type="Node3D" parent="Points"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
 
 [node name="NodeMesh" type="MeshInstance3D" parent="Points/PointEdit"]
 mesh = SubResource("BoxMesh_mkvvk")
 skeleton = NodePath("")
-surface_material_override/0 = SubResource("StandardMaterial3D_hnh4j")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(20, 0, 0, 0, -8.74228e-07, 20, 0, -20, -8.74228e-07, 0, -0.894441, 0)
