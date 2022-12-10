@@ -3,8 +3,8 @@
 [ext_resource type="Script" path="res://src/Script/GizmoContainer.gd" id="1_3sety"]
 [ext_resource type="Script" path="res://src/Script/XZPlaneDragScale.gd" id="2_qnnkv"]
 [ext_resource type="Material" uid="uid://cewu2sgdt3xgf" path="res://src/Asset/Material/Red.tres" id="3_nmhd5"]
-[ext_resource type="ArrayMesh" uid="uid://byiov5ft5e6sx" path="res://src/Asset/Mesh/arrow_mesh.tres" id="4_5jlvd"]
 [ext_resource type="Script" path="res://src/Scene/YPlaneDragScale.gd" id="6_1t4b0"]
+[ext_resource type="ArrayMesh" uid="uid://m7aql8ny4v02" path="res://src/Asset/Mesh/scale_arrow_mesh.res" id="6_o0863"]
 [ext_resource type="Material" uid="uid://cwn5t20gledi0" path="res://src/Asset/Material/Green.tres" id="7_3syv6"]
 [ext_resource type="Material" uid="uid://115nx1m45ccs" path="res://src/Asset/Material/Blue.tres" id="7_klgrt"]
 
@@ -19,6 +19,7 @@ script = ExtResource("1_3sety")
 collision_layer = 2
 collision_mask = 0
 script = ExtResource("2_qnnkv")
+factor = -2.0
 plane_normal = Vector3(0, 1, 0)
 axis = Vector3(1, 0, 0)
 meshes = [NodePath("ArrowMesh")]
@@ -29,12 +30,12 @@ transform = Transform3D(-4.37114e-08, 1, -4.37114e-08, 0, -4.37114e-08, -1, -1, 
 shape = SubResource("10")
 
 [node name="ArrowMesh" type="MeshInstance3D" parent="ScaleX"]
-transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, -0.03, 0, 0)
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0, 0)
 layers = 2
 material_override = ExtResource("3_nmhd5")
 cast_shadow = 0
 ignore_occlusion_culling = true
-mesh = ExtResource("4_5jlvd")
+mesh = ExtResource("6_o0863")
 
 [node name="ScaleZ" type="StaticBody3D" parent="." node_paths=PackedStringArray("parent")]
 transform = Transform3D(-4.37114e-08, 1, 0, 4.37114e-08, 1.91069e-15, -1, -1, -4.37114e-08, -4.37114e-08, 0, 0, 0)
@@ -51,12 +52,12 @@ transform = Transform3D(-4.37114e-08, 1, -4.37114e-08, 0, -4.37114e-08, -1, -1, 
 shape = SubResource("10")
 
 [node name="ArrowMesh" type="MeshInstance3D" parent="ScaleZ"]
-transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, -0.03, 0, 0)
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0, 0)
 layers = 2
 material_override = ExtResource("7_klgrt")
 cast_shadow = 0
 ignore_occlusion_culling = true
-mesh = ExtResource("4_5jlvd")
+mesh = ExtResource("6_o0863")
 
 [node name="ScaleY" type="StaticBody3D" parent="." node_paths=PackedStringArray("parent")]
 transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, -1.06581e-14, -1.06581e-14, -4.02341e-21, 1, 0, 0, 0)
@@ -64,6 +65,7 @@ collision_layer = 2
 collision_mask = 0
 script = ExtResource("6_1t4b0")
 axis = Vector3(0, 1, 0)
+meshes = [NodePath("ArrowMesh")]
 parent = NodePath("..")
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="ScaleY"]
@@ -71,9 +73,9 @@ transform = Transform3D(-4.37114e-08, 1, -4.37114e-08, 0, -4.37114e-08, -1, -1, 
 shape = SubResource("10")
 
 [node name="ArrowMesh" type="MeshInstance3D" parent="ScaleY"]
-transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, -0.03, 0, 0)
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0, 0)
 layers = 2
 material_override = ExtResource("7_3syv6")
 cast_shadow = 0
 ignore_occlusion_culling = true
-mesh = ExtResource("4_5jlvd")
+mesh = ExtResource("6_o0863")

@@ -1,7 +1,9 @@
 extends Node3D
 
 @onready var camera : Camera3D = get_viewport().get_camera_3d()
-@export var selected_gizmo : Node3D
+
+
+var selected_gizmo : Node3D
 var last_hover : Node3D
 const ray_length = 10000
 
@@ -71,3 +73,10 @@ func _unhandled_input(event : InputEvent) -> void:
 		elif is_instance_valid(last_hover):
 			last_hover.unhover()
 			last_hover = null
+
+func select_object(node : Node3D, gizmo_scene : PackedScene):
+	for child in get_children():
+		child.queue_free()
+	var gizmo : Node3D = gizmo_scene.instantiate()
+	gizmo.node = node
+	add_child(gizmo)

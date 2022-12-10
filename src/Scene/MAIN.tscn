@@ -32,9 +32,8 @@ glow_enabled = true
 
 [node name="Node3D" type="Node3D"]
 
-[node name="GizmoController" type="Node3D" parent="." node_paths=PackedStringArray("selected_gizmo")]
+[node name="GizmoController" type="Node3D" parent="."]
 script = ExtResource("1_k2tn5")
-selected_gizmo = NodePath("")
 
 [node name="GizmoContainer" parent="GizmoController" node_paths=PackedStringArray("node") instance=ExtResource("2_8ynu6")]
 node = NodePath("../../Points/PointEdit")
@@ -76,9 +75,10 @@ world_camera = NodePath("../../../EditorController/Head/WorldCamera")
 [node name="Points" type="Node3D" parent="."]
 
 [node name="PointEdit" type="Node3D" parent="Points"]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
+transform = Transform3D(0.610296, 0, 0, 0, -2.29426e-08, -0.612892, 0, 0.524866, -2.67904e-08, 0, 0, 0)
 
 [node name="NodeMesh" type="MeshInstance3D" parent="Points/PointEdit"]
+transform = Transform3D(1, 0, -2.98023e-08, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 mesh = SubResource("BoxMesh_mkvvk")
 skeleton = NodePath("")
 
