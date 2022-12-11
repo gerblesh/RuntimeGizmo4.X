@@ -3,7 +3,7 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://bcv6g1sa2u6iv"
+uid="uid://dwxj4hmqf5ab4"
 path="res://.godot/imported/scale_arrow.gltf-0841687a64c52e85ff69f654cb9f73e4.scn"
 
 [deps]
@@ -37,7 +37,7 @@ _subresources={
 "lods/normal_split_angle": 25.0,
 "save_to_file/enabled": true,
 "save_to_file/make_streamable": "",
-"save_to_file/path": "res://src/Asset/Mesh/scale_arrow_mesh.res"
+"save_to_file/path": "res://src/Asset/Mesh/scale_arrow_mesh.tres"
 }
 }
 }
