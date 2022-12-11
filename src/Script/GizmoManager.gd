@@ -49,7 +49,6 @@ func _unhandled_input(event : InputEvent) -> void:
 		if not event.pressed:
 			if !is_instance_valid(selected_gizmo):
 				return
-			print("Deselected plane")
 			selected_gizmo.selected = false
 			selected_gizmo._show_hover()
 			selected_gizmo = null

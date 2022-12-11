@@ -21,9 +21,9 @@ func select(_camera : Camera3D, event : InputEvent) -> void:
 		if vector.max_axis_index() == axis_index:
 			var new_axis : Vector3 = Vector3.ZERO
 			new_axis[i] = 1
-			scale_axis = new_axis
+			scale_axis = sign(new_axis)
 
 func apply_transform(_position : Vector3):
 	var axis_index : int = axis.max_axis_index()
 	var scale_index = scale_axis.max_axis_index()
-	node.scale[scale_index] = abs(start_scale[scale_index] + (_position[axis_index] * factor))
+	node.scale[scale_index] = abs(start_scale[scale_index] + (_position[axis_index] - start_position[axis_index]) * factor)

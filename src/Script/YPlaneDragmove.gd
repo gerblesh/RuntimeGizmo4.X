@@ -26,8 +26,6 @@ func select(_camera : Camera3D, event : InputEvent) -> void:
 
 	start_offset = get_offset_coordinates(event,camera,plane)
 
-	print("Pillar Selected")
-
 
 ################################################################################
 #

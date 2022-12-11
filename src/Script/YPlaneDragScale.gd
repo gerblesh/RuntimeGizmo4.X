@@ -35,4 +35,4 @@ func select(_camera : Camera3D, event : InputEvent) -> void:
 func apply_transform(_position : Vector3):
 	var axis_index : int = axis.max_axis_index()
 	var scale_index = scale_axis.max_axis_index()
-	node.scale[scale_index] = abs(start_scale[scale_index] + (_position[axis_index] * factor))
+	node.scale[scale_index] = abs(start_scale[scale_index] + (_position[axis_index] - start_position[axis_index]) * factor)
