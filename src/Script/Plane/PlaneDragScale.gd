@@ -1,4 +1,4 @@
-extends GizmoPlane
+extends PlaneDragTranslate
 
 var start_scale : Vector3
 var scale_axis : Vector3

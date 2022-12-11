@@ -1,6 +1,6 @@
 extends Gizmo
 
-class_name PlaneDragMove
+class_name PlaneDrag
 
 var plane : Array[float]
 

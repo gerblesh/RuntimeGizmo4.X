@@ -1,6 +1,6 @@
-extends PlaneDragMove
+extends PlaneDrag
 
-class_name GizmoPlane
+class_name PlaneDragTranslate
 
 
 @export var plane_normal : Vector3
@@ -39,4 +39,5 @@ func gizmo_tick(event : InputEvent) -> void:
 # passthroughs
 
 func apply_transform(_position : Vector3):
-	pass
+	node.global_position = _position
+	parent.global_position = _position

@@ -14,26 +14,32 @@ _global_script_classes=[{
 "language": &"GDScript",
 "path": "res://src/Script/Gizmo.gd"
 }, {
-"base": "PlaneDragMove",
-"class": &"GizmoPlane",
+"base": "Gizmo",
+"class": &"LineDrag",
 "language": &"GDScript",
-"path": "res://src/Script/GizmoPlane.gd"
+"path": "res://src/Script/Line/LineDrag.gd"
+}, {
+"base": "LineDrag",
+"class": &"LineDragTranslate",
+"language": &"GDScript",
+"path": "res://src/Script/Line/LineDragTranslate.gd"
 }, {
 "base": "Gizmo",
-"class": &"PlaneDragMove",
+"class": &"PlaneDrag",
 "language": &"GDScript",
-"path": "res://src/Script/PlaneDragmove.gd"
+"path": "res://src/Script/Plane/PlaneDrag.gd"
 }, {
-"base": "PlaneDragMove",
-"class": &"YPlaneGizmo",
+"base": "PlaneDrag",
+"class": &"PlaneDragTranslate",
 "language": &"GDScript",
-"path": "res://src/Script/YPlaneDragmove.gd"
+"path": "res://src/Script/Plane/PlaneDragTranslate.gd"
 }]
 _global_script_class_icons={
 "Gizmo": "",
-"GizmoPlane": "",
-"PlaneDragMove": "",
-"YPlaneGizmo": ""
+"LineDrag": "",
+"LineDragTranslate": "",
+"PlaneDrag": "",
+"PlaneDragTranslate": ""
 }
 
 [application]
