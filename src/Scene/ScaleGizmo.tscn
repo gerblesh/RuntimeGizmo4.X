@@ -1,9 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://dhw26u6w8er1k"]
+[gd_scene load_steps=9 format=3 uid="uid://cbqv71886382i"]
 
 [ext_resource type="Script" path="res://src/Script/GizmoContainer.gd" id="1_3sety"]
 [ext_resource type="Script" path="res://src/Script/XZPlaneDragScale.gd" id="2_qnnkv"]
 [ext_resource type="Material" uid="uid://cewu2sgdt3xgf" path="res://src/Asset/Material/Red.tres" id="3_nmhd5"]
-[ext_resource type="Script" path="res://src/Scene/YPlaneDragScale.gd" id="6_1t4b0"]
+[ext_resource type="Script" path="res://src/Script/YPlaneDragScale.gd" id="6_b1aqc"]
 [ext_resource type="ArrayMesh" uid="uid://m7aql8ny4v02" path="res://src/Asset/Mesh/scale_arrow_mesh.res" id="6_o0863"]
 [ext_resource type="Material" uid="uid://cwn5t20gledi0" path="res://src/Asset/Material/Green.tres" id="7_3syv6"]
 [ext_resource type="Material" uid="uid://115nx1m45ccs" path="res://src/Asset/Material/Blue.tres" id="7_klgrt"]
@@ -63,7 +63,7 @@ mesh = ExtResource("6_o0863")
 transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, -1.06581e-14, -1.06581e-14, -4.02341e-21, 1, 0, 0, 0)
 collision_layer = 2
 collision_mask = 0
-script = ExtResource("6_1t4b0")
+script = ExtResource("6_b1aqc")
 axis = Vector3(0, 1, 0)
 meshes = [NodePath("ArrowMesh")]
 parent = NodePath("..")
